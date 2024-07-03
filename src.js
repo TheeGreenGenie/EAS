@@ -1,6 +1,14 @@
 const firstDiv = document.querySelector("div")
 let gridSize = 17;
 
+function randomColor() {
+    const r = Math.floor(Math.random() * 256),
+          g = Math.floor(Math.random() * 256),
+          b = Math.floor(Math.random() * 256);
+    
+    return `rgb(${r}, ${g}, ${b})`
+};
+
 function createGrid(number) {
     for (let step = 0; step < number; step++) {
         let aDiv = document.createElement('div');
@@ -14,12 +22,15 @@ function createGrid(number) {
     };
 };
 
+
+
 function divEventListeners() {
     const divs = document.querySelectorAll("div.grid");
 
     divs.forEach((div) => {
+        let color = randomColor();
         div.addEventListener("mouseenter", () => {
-            div.style.backgroundColor = "lightblue";
+            div.style.backgroundColor = color;
         });
     });
 };
